@@ -9,7 +9,7 @@ TodoRoutes.get("/", async (req, res) => {
   try {
     const todos = await TodoModel.find();
     res.status(200).send(todos);
-  } catch (err) {
+  } catch (e) {
     res.status(500).send(e.message);
   }
 });
@@ -18,8 +18,9 @@ TodoRoutes.get("/", async (req, res) => {
 TodoRoutes.get("/completed", async (req, res) => {
   try {
     const todos = await TodoModel.find({ iscompleted: true });
-    res.status(200).send(todos.length);
-  } catch (err) {
+    let completedTodo = todos.length;
+    res.send(200, completedTodo);
+  } catch (e) {
     res.status(500).send(e.message);
   }
 });
@@ -33,7 +34,7 @@ TodoRoutes.post("/create", async (req, res) => {
     res
       .status(201)
       .send({ massage: "created todo", alert: "todo added successfully" });
-  } catch (err) {
+  } catch (e) {
     res.status(500).send(e.message);
   }
 });
@@ -52,7 +53,7 @@ TodoRoutes.patch("/:id", async (req, res) => {
     res
       .status(200)
       .send({ massage: "updated", alert: "Status updated successfully" });
-  } catch (err) {
+  } catch (e) {
     res.status(500).send(e.message);
   }
 });
@@ -66,7 +67,7 @@ TodoRoutes.delete("/:id", async (req, res) => {
     res
       .status(200)
       .send({ massage: "deleted", alert: "todo deleted successfully" });
-  } catch (err) {
+  } catch (e) {
     res.status(500).send(e.message);
   }
 });
