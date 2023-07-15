@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router-dom";
 import About from "../pages/About";
 import Cart from "../pages/Cart";
 import Contact from "../pages/Contact";
@@ -6,6 +7,7 @@ import Movies from "../pages/Movies";
 import NotFoundPage from "../pages/NotFoundPage";
 import Product from "../pages/Product";
 import Todo from "../pages/Todo";
+import { Box } from "@chakra-ui/react";
 
 const AllRoutes = () => {
   return (
